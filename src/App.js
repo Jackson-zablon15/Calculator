@@ -1,50 +1,39 @@
-import React from "react"
-import { useState } from "react" 
+import React, { useState } from "react"
+import { values } from "./data";
 
-function Button ({value}){
-  const [displayValue,setDisplayValue]=useState('clicked');
-  function handleClick(){
-   setDisplayValue(4)
-      }
-  return(
-    <div className="item" onClick={handleClick} >{value}</div>
-  )
+function CalculateInput(){
+     setResult(eval(input))
+     setDisplay('')
 }
 
-export default function Calculator({displayValue}){
+export default function Calculator(){
+  const [display,setDisplay]=useState('')
+  const [result,setResult]=useState(null)
  
+  function Button({value}){
+
+    return(
+        <>
+        <button onClick={()=>displayValue(value.value)}>{value.label}</button>
+        </>
+    )
+  }
+
+  function displayValue(input){
+    setDisplay(display+input)
+  }
+
   return(
     <>
     <h1 style={{textAlign:"center"}}>Simple Calculator</h1>
-    <div className="grid-container">
-    <div className="item1">{displayValue}</div>
+    <div className="grid-container"> 
+    <div className="item1"><input type="text" value={display} readOnly></input></div>
  
-    <Button value={"C"} />
-    <Button value={"()"}/>
-    <Button value={"%"}/>
-    <Button value={"/"}/>
-
-    <Button value={7}/>
-    <Button value={8}/>
-    <Button value={9}/>
-    <Button value={"X"}/>
-   
-    <Button value={4}/>
-    <Button value={5}/>
-    <Button value={6}/>
-    <Button value={"-"}/>
-
-    <Button value={1}/>
-    <Button value={2}/>
-    <Button value={3}/>
-    <Button value={"+"}/>
-   
-    <Button value={"(-)"}/>
-    <Button value={0}/>
-    <Button value={"."}/>
-    <Button value={"="}/>
-    </div>
-   
+   {
+    values.map((value,index)=>(<Button value={value} key={index}>=</Button>))
+   }
+   <button onClick={()=>CalculateInput(display)}>=</button>
+    </div>   
     </>
   )
 }
