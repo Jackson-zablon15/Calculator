@@ -1,14 +1,14 @@
 import React, { useState } from "react"
 import { values } from "./data";
 
-function CalculateInput(){
-     setResult(eval(input))
-     setDisplay('')
-}
-
 export default function Calculator(){
   const [display,setDisplay]=useState('')
   const [result,setResult]=useState(null)
+
+  function CalculateInput(){
+    setResult(eval(input))
+    setDisplay('')
+}
  
   function Button({value}){
 
