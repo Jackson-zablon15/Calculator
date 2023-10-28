@@ -6,7 +6,7 @@ export default function Calculator(){
   const [result,setResult]=useState(null)
 
   function CalculateInput(){
-    setResult(eval(input))
+    setResult(eval())
     setDisplay('')
 }
  
